@@ -1,14 +1,25 @@
 # Weather-Bigdata-Contest-2021
 The Weather Big Data Contest is an annual big data contest organized by the South Korea Meteorological Administration. Our team won 2nd place and a special award in the Public Cooperation category of the contest. The related codes and results are presented in this repository.
 
-Topic: Prediction of landslide occurrences 24 hours/48 hours from the given date in the respective region of Gyeongsang area in South Korea.
+## Topic: Prediction of landslide occurrences 24 hours/48 hours from the given date in the respective region of Gyeongsang area in South Korea.
 
-Introduction: 최근 지구온난화로 태풍 및 집중호우의 빈도가 높아지고, 국지성 집중호우의 강도가 커지며 시간강우량, 일강우량 및 연속강우량이 현저하게 증가하고 있다. 작년 2020년을 예로 들면, 중부지방의 장마기간은 54일로 가장 길었으며, 최근 10년 중 가장 비가 많이 온 해로 기록되었다. 강우량의 증가는 홍수 및 산사태를 유발하기 때문에 국토면적의 약 65%가 지형의 기복이 심한 산지인 우리나라에 적잖은 영향을 끼칠 것으로 예상된다. 산사태 예측정보는 권역별로 과거 산사태 발생 이력분석 결과를 토대로 토양내 빗물의 양을 토양함수지수로 산정하고 그 지수에 따라 예⋅경보로 구분한다. 권역별 토양함수지수가 80% 도달시 산사태 주의보를 발령하고, 권역별 토양함수지수가 100% 도달 시 산사태 경보를 발령하게 된다. 산사태가 자주 발생하는 경상도는 권역이 3개로 구분된다.  현재 산림청이 제공하는 산사태 예측정보는 전국을 11개의 권역으로 일괄적으로 구분하므로 국소적으로 발생하는 산사태 예측에는 한계가 있다. 이에 따라 경상도 지역의 지역별 강우와 토양특성을 반영한 산사태 예측정보 시스템을 머신러닝 모델을 사용하여 구현하고자 한다. 
+### Introduction
+Due to recent global warming, the frequency of typhoons and heavy localized rainfall has increased in South Korea. The intensity of localized heavy rainfall has also grown, resulting in significant increases in hourly, daily, and consecutive rainfall amounts. Taking the year 2020 as an example, the monsoon season in the central region lasted for 54 days, making it the year with the highest recorded rainfall in the past decade. The increase in rainfall is expected to have a considerable impact on South Korea, where approximately 65% of the land area consists of mountainous terrain with significant elevation changes, leading to floods and landslides.
 
-Data:
+Landslide prediction information is categorized into forecasts and warnings based on the analysis of past landslide occurrences in each region. The amount of water in the soil is determined by the soil moisture index, which is calculated using historical data. Based on this index, landslide alerts and warnings are issued. A landslide alert is issued when the regional soil moisture index reaches 80%, and a landslide warning is issued when it reaches 100%. The Gyeongsang Province, where landslides frequently occur, is divided into three regions.
 
-EDA
+Currently, the landslide prediction information provided by the Korea Forest Service categorizes the entire country into 11 regions, which has limitations in predicting localized landslides. Therefore, there is a need to implement a landslide prediction information system specific to the Gyeongsang Province, incorporating regional rainfall and soil characteristics using statistical and machine learning models.
 
-Modeling
 
-Conclusion
+### Data
+산사태의 주원인
+외적 원인 : 강우
+내적 원인 : 지형 및 지질
+따라서 산사태 발생 예측 모델을 구현하기 위해서는 강우와 같은 날씨 관련 데이터와 토양도, 임상도와 같은 지형 관련 데이터가 필요하다.
+
+
+### EDA
+
+### Modeling
+
+### Conclusion
