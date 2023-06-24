@@ -1,7 +1,9 @@
 # Weather-Bigdata-Contest-2021
-The Weather Big Data Contest is an annual big data contest organized by the South Korea Meteorological Administration. Our team won 2nd place and a special award in the Public Cooperation category of the contest. The related codes and results are presented in this repository.
 
 ## Topic: Prediction of landslide occurrences 24 hours/48 hours from the given date in the respective region of Gyeongsang area in South Korea.
+
+(The Weather Big Data Contest is an annual big data contest organized by the South Korea Meteorological Administration. Our team won 2nd place and a special award in the Public Cooperation category of the contest. The related codes and results are presented in this repository.)
+
 
 ### Introduction
 Due to recent global warming, the frequency of typhoons and heavy localized rainfall has increased in South Korea. The intensity of localized heavy rainfall has also grown, resulting in significant increases in hourly, daily, and consecutive rainfall amounts. Taking the year 2020 as an example, the monsoon season in the central region lasted for 54 days, making it the year with the highest recorded rainfall in the past decade. The increase in rainfall is expected to have a considerable impact on South Korea, where approximately 65% of the land area consists of mountainous terrain with significant elevation changes, leading to floods and landslides.
