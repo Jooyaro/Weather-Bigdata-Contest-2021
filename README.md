@@ -26,7 +26,9 @@ Currently, the landslide prediction information provided by the Korea Forest Ser
 
 
 ### EDA for rainfall
-![image](https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/cc64078e-677d-4332-867c-289ee936ef7a)
+<div align="center">
+  ![image](https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/cc64078e-677d-4332-867c-289ee936ef7a)
+</div>
 
 Landslides primarily occur during periods of heavy rainfall, resulting in a higher concentration of occurrences during the summer. Over a span of nine years, there were a total of 359 occurrences, indicating a relatively low occurrence rate. Over a period of nine years, landslides occurred on 11 unique dates out of a total of 3,287 days. The landslides occurred in 243 out of 637 unique regions, indicating a concentration in a limited number of dates and a narrow range of areas.
 
