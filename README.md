@@ -69,9 +69,19 @@ As a result, out of the initial 201 variables, 8 variables were selected for eac
 
 <img width="834" alt="Screenshot 2023-06-24 at 11 23 30 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/5e63d0b7-2444-45da-9ddc-4655ade3ffa0">
 
+<img width="761" alt="Screenshot 2023-06-24 at 11 34 39 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/b8b8e682-2e3a-42c5-96ec-10894d5069c5">
 
-### Conclusion
+As seen in the preceding table, both models showed that the most significant variables are related to weather. Regarding terrain variables, higher elevation was associated with a higher probability of landslide occurrences, and in the case of the southern region, including Gyeongsang area, the probability of landslide occurrences was found to be higher.
 
+In the model predicting landslide occurrences 1 day ahead, the coefficient of the variable "day_rain," representing precipitation from the previous day, had the highest magnitude (18.5278). The variable "prob24," indicating the probability of rainfall in the next 24 hours, showed a positive correlation, while the variable "prob48," representing the probability of rainfall in the next 48 hours, showed a negative correlation. This implies that a higher probability of rainfall 48 hours ahead reduces the likelihood of landslide occurrences 1 day later. Additionally, when the soil texture corresponds to silty loam(SCSTX_CD3), indicating low permeability, the possibility of landslide occurrences is somewhat reduced.
+
+In the model predicting landslide occurrences 2 days ahead, the variable "sixhour48," representing accumulated rainfall in the previous 48 hours, showed a positive correlation. Areas with planted fruit trees (KOFTR_GROU39), which are susceptible to soil erosion, had a higher probability of landslide occurrences.
+
+
+### Discussion
+The current landslide prediction system provided by the Korea Forest Service divides the country into 11 regions(3 regions in the case of the Gyeongsang area) uniformly, which limits its ability to predict landslides occurring at a local level. In response to this limitation, our team proposes a Landslide Prediction Information System for the Gyeongsang region, incorporating regional rainfall and soil characteristics, which offers the advantage of predicting landslide occurrences at the town or district level.
+
+This system takes into account the specific rainfall and soil characteristics of each area in the Gyeongsang region, allowing for more localized and accurate landslide predictions.
 
 
 
