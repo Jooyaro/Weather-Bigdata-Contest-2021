@@ -1,9 +1,9 @@
-# Weather-Bigdata-Contest-2021
+# Weather Bigdata Contest-2021
 
-## Topic: Prediction of landslide occurrences 24 hours/48 hours from the given date in the respective region of Gyeongsang area in South Korea.
+### A contest description
+The Weather Big Data Contest is an annual competition organized by the South Korea Meteorological Administration. It presents objectives related to weather data and challenges participants to solve problems in both the public nd private sectors. Participants can choose either sector to participate in. In 2021, the contest required participants to predict landslide occurrences within 24 and 48 hours based on both provided and external data regarding the Gyeongsang area in South Korea. Using data from 2011-2019, participants were expected to predict landslide occurrences in 2020. Our team won 2nd place and a special award in the Public Cooperation sector of the contest. The repository contains the related codes and results.
 
-(The Weather Big Data Contest is an annual big data contest organized by the South Korea Meteorological Administration. Our team won 2nd place and a special award in the Public Cooperation category of the contest. The related codes and results are presented in this repository.)
-
+### Objective: Prediction of landslide occurrences within 24 and 48 hours regarding the Gyeongsang area in South Korea.
 
 ### Introduction
 Due to recent global warming, the frequency of typhoons and heavy localized rainfall has increased in South Korea. The intensity of localized heavy rainfall has also grown, resulting in significant increases in hourly, daily, and consecutive rainfall amounts. Taking the year 2020 as an example, the monsoon season in the central region lasted for 54 days, making it the year with the highest recorded rainfall in the past decade. The increase in rainfall is expected to have a considerable impact on South Korea, where approximately 65% of the land area consists of mountainous terrain with significant elevation changes, leading to floods and landslides.
@@ -14,26 +14,67 @@ Currently, the landslide prediction information provided by the Korea Forest Ser
 
 
 ### Data (Total: 2,326,961 x 201)
-- Row: 3,653 days(2011-2020) * 637 umd-s
-- Column: 8 weather variables(초단기실황 4개, 단기예보 4개) + 193 geographic variables(97 from soil map, 90 from forestry map, 6 from soil drain grade)
-- landslide records: 초단기실황 (강수) - 일강수량, 일일시간당최대강수량, 1일전 일강수량, 2일전 일강수량, 단기예보 from 2011-2020 (강수확률, 6시간 강수량) of Gyeongsang provinces --> Generate variables: 24시간뒤강수확률, 48시간뒤강수확률, 24시간뒤강수량, 48시간뒤강수량
-- rainfall(External cause)
-- geographic and geological data(Internal cause) - 토양도, 임상도, 배수등급
+- Row
+  - 3,653 days(2011-2020) * 637 umd-s
+- Column
+  - Eight weather-related variables(four variables regarding short-term real-time observations, four variables regarding short-term forecat)
+  - 193 geographic-related variables(97 variables related to the soil map, 90 variables related to the forestry map, six variables related to the soil drain grade)
+- Type
+  - Landslide records: # of occurrence, the magnitude of landslides for towns in Gyeongsang provinces
+  - Rainfall(External cause): short-term real-time observations(precipitation) - daily precipitation, max precipitation intensity per hour, precipitation amount from the day before, precipitation amount from two days before, short-term forecast from 2011 to 2020(Precipitation probability, six-hour precipitation) of Gyeongsang provinces -> Generated variables: precipitation probability in 24hours, precipitation probability in 48hours, precipitation amount in 24hours, precipitation amount in 48hours
+  - Geographic and geological data(Internal cause) - Soil map, Forestry map, Soil drain grade
 
 
-### EDA
-
+### EDA for rainfall
 ![image](https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/cc64078e-677d-4332-867c-289ee936ef7a)
-산사태는 주로 비가 많이 오는 시기에 집중하여 발생하기 때문에 발생건수가 여름에 집중되어 있으며, 9년간 총 359건으로 발생건수가 많지 않다.
 
-9년 간 산사태가 발생한 고유 날짜는 3,287일 중 11일, 산사태가 발생한 고유 지역은 637개 지역 중 243개 지역으로 적은 날짜에 좁은 지역으로 편중되어 있다.
+Landslides primarily occur during periods of heavy rainfall, resulting in a higher concentration of occurrences during the summer. Over a span of nine years, there were a total of 359 occurrences, indicating a relatively low occurrence rate. Over a period of nine years, landslides occurred on 11 unique dates out of a total of 3,287 days. The landslides occurred in 243 out of 637 unique regions, indicating a concentration in a limited number of dates and a narrow range of areas.
 
+![Screenshot 2023-06-24 at 10 04 40 PM](https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/0625b954-30ec-489f-8405-11d185b4fec9)
 
+When comparing the variables related to max precipitation intensity per hour(daymax_rain), daily precipitation(day_rain), precipitation amount from the day before(onedayago_rain), and precipitation amount from two days before(twodaysago_rain) based on the occurrence of landslides, it can be observed that the values of these variables are higher when landslides occur compared to when they do not. Therefore, it can be anticipated that the 6-hour precipitation data from short-term forecasts will be crucial.
+
+### EDA for geographic data
+Please refer to the corresponding file in the repository.
 
 
 ### Modeling
-- Handling missing data
+- Handling missing values
+
+<img width="408" alt="Screenshot 2023-06-24 at 10 55 30 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/9a9381a9-22d9-4366-be53-cbe82b4ff16f">
+
+In the final dataset, missing values occurred in a total of five variables. Assuming the missing data pattern follows the MAR(Missing At Random) assumption, where the missing pattern is not dependent on the missing values themselves, the missing values were imputed using the MICE package in R.
+
 - Undersampling
-- Model comparison
+
+In the final dataset our team built, out of a total of 2,093,819 rows, there are 359 occurrences where landslides actually occurred on specific dates and towns. The data is highly imbalanced with a ratio of 5,832:1 between the occurrences of 0(no occurrence of landslide) and 1(yes occurrence of landslide). If all predictions are made as 0 in order to fit the data to the model, the accuracy would be close to 1, but the recall would be close to 0. To prevent this, two evaluation metrics were chosen for the model:
+  - Accuracy: It compares the number of correct predictions (both occurrence and non-occurrence) to the total number of occurrences, representing the proportion of correct predictions out of the total.
+  - Critical Success Index(CSI): It compares the number of correct predictions related to occurrences with the total sum of occurrences in both the predicted and actual occurrences.
+
+Regarding the data used for the model, as the number of observations in the majority class(0) is 2,093,460, which is too large to oversample, we decided to use all 359 rows of data from the majority class(1) and perform undersampling on a portion of the data from the majority class(0). Undersampling can be done using the RandomUnderSampler function from the imbleran package in Python, but in this model, we used stratified sampling based on the date (month) as the criterion.
+
+- Modeling
+We compared ML/DL/statistical models for classification. During this process, we performed undersampling by using 1% of the observations from the majority class(0). The undersampled dataset consisted of 21,294 observations, including 20,935 observations from class 0 and 359 observations from class 1. We divided the data into training and test sets in a 7:3 ratio to model the prediction of 'occurrence within 24-hour' and 'occurrence within 48-hour', separately. We compared six models based on accuracy and critical success index (CSI).
+
+<img width="950" alt="Screenshot 2023-06-24 at 11 17 43 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/0e577e11-f6d6-4d76-bfae-66fbbe66f480">
+
+Both the models for predicting the occurrence within 1 day and 2 days showed higher accuracy and CSI when using the LightGBM model. Therefore, we used this model for predicting landslide occurrences in 2020. However, the accuracy calculation showed a very low value of 90.38%, and the CSI was 14.33%. This is mainly due to the high number of landslide occurrences in 2020. When examining the number of landslide forecasts issued by the Korea Forest Service's Landslide Information System, it was found that the number of forecasts was below 100 until 2019, but it significantly increased to 154 in 2020. Therefore, we applied a statistically robust logistic regression model.
+
+Out of the 201 collected variables, we performed LASSO logistic regression analysis with an L1 penalty to estimate non-significant variables as 0 or coefficients close to 0. This allowed us to perform the analysis with only a subset of variables. To confirm significant variables through coefficient comparison, we performed min-max normalization for each variable and then conducted the modeling. We trained the LASSO logistic regression model using data from 2011-2019, resulting in 105,032*201 and 42,229*201 observations. Since logistic regression returns probability values, we set the cut-off threshold at 0.5 to distinguish between 0 and 1.
+
+### Result
+As a result, out of the initial 201 variables, 8 variables were selected for each model to predict landslide occurrences within 1 day and 2 days, respectively:
+  - 1-day model: max_rain, day_rain, prob24, prob48, LOCTN_ALTT_max, CLZN_CD3, TPGRP_TPCD12, SCSTX_CD3
+  - 2-day model: sixhour48, prob24, prob48, LOCTN_ALTT_max, CLZN_CD2, CLZN_CD3, TPGRP_TPCD12, KORTR_GROU39
+
+<img width="834" alt="Screenshot 2023-06-24 at 11 23 30 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/5e63d0b7-2444-45da-9ddc-4655ade3ffa0">
+
 
 ### Conclusion
+
+
+
+
+
+
+
