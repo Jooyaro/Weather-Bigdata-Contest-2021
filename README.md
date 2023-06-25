@@ -63,11 +63,11 @@ Both the models for predicting the occurrence within 1 day and 2 days showed hig
 Out of the 201 collected variables, we performed LASSO logistic regression analysis with an L1 penalty to estimate non-significant variables as 0 or coefficients close to 0. This allowed us to perform the analysis with only a subset of variables. To confirm significant variables through coefficient comparison, we performed min-max normalization for each variable and then conducted the modeling. We trained the LASSO logistic regression model using data from 2011-2019, resulting in 105,032*201 and 42,229*201 observations. Since logistic regression returns probability values, we set the cut-off threshold at 0.5 to distinguish between 0 and 1.
 
 ### Result
+<img width="834" alt="Screenshot 2023-06-24 at 11 23 30 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/5e63d0b7-2444-45da-9ddc-4655ade3ffa0">
+
 As a result, out of the initial 201 variables, 8 variables were selected for each model to predict landslide occurrences within 1 day and 2 days, respectively:
   - 1-day model: max_rain, day_rain, prob24, prob48, LOCTN_ALTT_max, CLZN_CD3, TPGRP_TPCD12, SCSTX_CD3
   - 2-day model: sixhour48, prob24, prob48, LOCTN_ALTT_max, CLZN_CD2, CLZN_CD3, TPGRP_TPCD12, KORTR_GROU39
-
-<img width="834" alt="Screenshot 2023-06-24 at 11 23 30 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/5e63d0b7-2444-45da-9ddc-4655ade3ffa0">
 
 <img width="761" alt="Screenshot 2023-06-24 at 11 34 39 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/b8b8e682-2e3a-42c5-96ec-10894d5069c5">
 
