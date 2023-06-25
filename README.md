@@ -54,6 +54,7 @@ In the final dataset our team built, out of a total of 2,093,819 rows, there are
 Regarding the data used for the model, as the number of observations in the majority class(0) is 2,093,460, which is too large to oversample, we decided to use all 359 rows of data from the majority class(1) and perform undersampling on a portion of the data from the majority class(0). Undersampling can be done using the RandomUnderSampler function from the imbleran package in Python, but in this model, we used stratified sampling based on the date (month) as the criterion.
 
 - Modeling
+  
 We compared ML/DL/statistical models for classification. During this process, we performed undersampling by using 1% of the observations from the majority class(0). The undersampled dataset consisted of 21,294 observations, including 20,935 observations from class 0 and 359 observations from class 1. We divided the data into training and test sets in a 7:3 ratio to model the prediction of 'occurrence within 24-hour' and 'occurrence within 48-hour', separately. We compared six models based on accuracy and critical success index (CSI).
 
 <img width="950" alt="Screenshot 2023-06-24 at 11 17 43 PM" src="https://github.com/Jooyaro/Weather-Bigdata-Contest-2021/assets/35860986/0e577e11-f6d6-4d76-bfae-66fbbe66f480">
