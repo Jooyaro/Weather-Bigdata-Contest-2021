@@ -1,4 +1,4 @@
-# Weather Bigdata Contest-2021
+# Weather Bigdata Contest 2021
 
 ### A contest description
 The Weather Big Data Contest is an annual competition organized by the South Korea Meteorological Administration. It presents objectives related to weather data and challenges participants to solve problems in both the public nd private sectors. Participants can choose either sector to participate in. In 2021, the contest required participants to predict landslide occurrences within 24 and 48 hours based on both provided and external data regarding the Gyeongsang area in South Korea. Using data from 2011-2019, participants were expected to predict landslide occurrences in 2020. Our team won 2nd place and a special award in the Public Cooperation sector of the contest. The repository contains the related codes and results.
